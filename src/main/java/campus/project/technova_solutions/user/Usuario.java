@@ -1,6 +1,10 @@
 
 package campus.project.technova_solutions.user;
 
+import campus.project.technova_solutions.ticket.Ticket;
+import campus.project.technova_solutions.comment.Comentario;
+import campus.project.technova_solutions.history.HistorialCambio;
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -8,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "usuarios")
-public class User {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,26 +33,26 @@ public class User {
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-
+    // Tickets creados por el usuario
     @OneToMany(mappedBy = "usuarioSolicitante")
     private Set<Ticket> ticketsSolicitados = new HashSet<>();
 
-
+    // Tickets asignados al usuario como técnico
     @OneToMany(mappedBy = "tecnicoAsignado")
     private Set<Ticket> ticketsAsignados = new HashSet<>();
 
-    
+    // Comentarios realizados
     @OneToMany(mappedBy = "autor")
     private Set<Comentario> comentarios = new HashSet<>();
 
-    
+    // Cambios realizados en el historial
     @OneToMany(mappedBy = "usuarioResponsable")
     private Set<HistorialCambio> cambiosRealizados = new HashSet<>();
 
-    public User() {
+    public Usuario() {
     }
 
-    public User(String nombre, String email, String password,
+    public Usuario(String nombre, String email, String password,
                    String rol, LocalDateTime fechaCreacion) {
 
         this.nombre = nombre;

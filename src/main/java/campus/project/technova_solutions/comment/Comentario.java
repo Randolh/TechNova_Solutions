@@ -1,5 +1,8 @@
 
-package campus.project.technova_solutions.comment; 
+package campus.project.technova_solutions.comment;
+
+import campus.project.technova_solutions.ticket.Ticket;
+import campus.project.technova_solutions.user.Usuario;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -74,4 +77,3 @@ public class Comentario {
         this.fechaCreacion = fechaCreacion;
     }
 }
-

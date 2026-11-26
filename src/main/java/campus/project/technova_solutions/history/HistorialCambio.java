@@ -1,5 +1,7 @@
-
 package campus.project.technova_solutions.history;
+
+import campus.project.technova_solutions.ticket.Ticket;
+import campus.project.technova_solutions.user.Usuario;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
