@@ -1,0 +1,143 @@
+
+package campus.project.technova_solutions.user;
+
+import campus.project.technova_solutions.ticket.Ticket;
+import campus.project.technova_solutions.comment.Comentario;
+import campus.project.technova_solutions.history.HistorialCambio;
+import campus.project.technova_solutions.enums.Rol;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "usuarios")
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
+    private String nombre;
+
+    @Column(nullable = false, unique = true, length = 150)
+    private String email;
+
+    @Column(nullable = false, length = 255)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Rol rol;
+
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
+
+    // Tickets creados por el usuario
+    @OneToMany(mappedBy = "usuarioSolicitante")
+    private Set<Ticket> ticketsSolicitados = new HashSet<>();
+
+    // Tickets asignados al usuario como técnico
+    @OneToMany(mappedBy = "tecnicoAsignado")
+    private Set<Ticket> ticketsAsignados = new HashSet<>();
+
+    // Comentarios realizados
+    @OneToMany(mappedBy = "autor")
+    private Set<Comentario> comentarios = new HashSet<>();
+
+    // Cambios realizados en el historial
+    @OneToMany(mappedBy = "usuarioResponsable")
+    private Set<HistorialCambio> cambiosRealizados = new HashSet<>();
+
+    public Usuario() {
+    }
+
+    public Usuario(String nombre, String email, String password,
+                   Rol rol, LocalDateTime fechaCreacion) {
+
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Set<Ticket> getTicketsSolicitados() {
+        return ticketsSolicitados;
+    }
+
+    public void setTicketsSolicitados(Set<Ticket> ticketsSolicitados) {
+        this.ticketsSolicitados = ticketsSolicitados;
+    }
+
+    public Set<Ticket> getTicketsAsignados() {
+        return ticketsAsignados;
+    }
+
+    public void setTicketsAsignados(Set<Ticket> ticketsAsignados) {
+        this.ticketsAsignados = ticketsAsignados;
+    }
+
+    public Set<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(Set<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public Set<HistorialCambio> getCambiosRealizados() {
+        return cambiosRealizados;
+    }
+
+    public void setCambiosRealizados(Set<HistorialCambio> cambiosRealizados) {
+        this.cambiosRealizados = cambiosRealizados;
+    }
+}
+
