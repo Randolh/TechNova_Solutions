@@ -7,7 +7,8 @@ import jakarta.validation.constraints.Size;
 
 public class CommentRequestDto {
 
-
+    @NotBlank(message = "El comentario no puede estar vacío")
+    
     private String contenido;
 
     public CommentRequestDto() {
