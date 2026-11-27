@@ -1,7 +1,9 @@
+
 package campus.project.technova_solutions.history;
 
 import campus.project.technova_solutions.ticket.Ticket;
 import campus.project.technova_solutions.user.Usuario;
+import campus.project.technova_solutions.enums.EstadoTicket;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -14,11 +16,13 @@ public class HistorialCambio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado_anterior", nullable = false, length = 20)
-    private String estadoAnterior;
+    private EstadoTicket estadoAnterior;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado_nuevo", nullable = false, length = 20)
-    private String estadoNuevo;
+    private EstadoTicket estadoNuevo;
 
     // Ticket al que corresponde el cambio
     @ManyToOne
@@ -36,8 +40,10 @@ public class HistorialCambio {
     public HistorialCambio() {
     }
 
-    public HistorialCambio(String estadoAnterior, String estadoNuevo,
-                           Ticket ticket, Usuario usuarioResponsable,
+    public HistorialCambio(EstadoTicket estadoAnterior,
+                           EstadoTicket estadoNuevo,
+                           Ticket ticket,
+                           Usuario usuarioResponsable,
                            LocalDateTime fechaCambio) {
 
         this.estadoAnterior = estadoAnterior;
@@ -51,19 +57,19 @@ public class HistorialCambio {
         return id;
     }
 
-    public String getEstadoAnterior() {
+    public EstadoTicket getEstadoAnterior() {
         return estadoAnterior;
     }
 
-    public void setEstadoAnterior(String estadoAnterior) {
+    public void setEstadoAnterior(EstadoTicket estadoAnterior) {
         this.estadoAnterior = estadoAnterior;
     }
 
-    public String getEstadoNuevo() {
+    public EstadoTicket getEstadoNuevo() {
         return estadoNuevo;
     }
 
-    public void setEstadoNuevo(String estadoNuevo) {
+    public void setEstadoNuevo(EstadoTicket estadoNuevo) {
         this.estadoNuevo = estadoNuevo;
     }
 
@@ -91,4 +97,3 @@ public class HistorialCambio {
         this.fechaCambio = fechaCambio;
     }
 }
-

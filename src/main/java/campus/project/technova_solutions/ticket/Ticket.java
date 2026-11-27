@@ -1,8 +1,12 @@
+
 package campus.project.technova_solutions.ticket;
 
 import campus.project.technova_solutions.user.Usuario;
 import campus.project.technova_solutions.comment.Comentario;
 import campus.project.technova_solutions.history.HistorialCambio;
+import campus.project.technova_solutions.enums.CategoriaTicket;
+import campus.project.technova_solutions.enums.PrioridadTicket;
+import campus.project.technova_solutions.enums.EstadoTicket;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -23,14 +27,17 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descripcion;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
-    private String categoria;
+    private CategoriaTicket categoria;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String prioridad;
+    private PrioridadTicket prioridad;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String estado;
+    private EstadoTicket estado;
 
     // Usuario que solicita el ticket
     @ManyToOne
@@ -59,9 +66,12 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(String titulo, String descripcion, String categoria,
-                  String prioridad, String estado,
-                  Usuario usuarioSolicitante, Usuario tecnicoAsignado,
+    public Ticket(String titulo, String descripcion,
+                  CategoriaTicket categoria,
+                  PrioridadTicket prioridad,
+                  EstadoTicket estado,
+                  Usuario usuarioSolicitante,
+                  Usuario tecnicoAsignado,
                   LocalDateTime fechaCreacion) {
 
         this.titulo = titulo;
@@ -94,27 +104,27 @@ public class Ticket {
         this.descripcion = descripcion;
     }
 
-    public String getCategoria() {
+    public CategoriaTicket getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(CategoriaTicket categoria) {
         this.categoria = categoria;
     }
 
-    public String getPrioridad() {
+    public PrioridadTicket getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(PrioridadTicket prioridad) {
         this.prioridad = prioridad;
     }
 
-    public String getEstado() {
+    public EstadoTicket getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoTicket estado) {
         this.estado = estado;
     }
 

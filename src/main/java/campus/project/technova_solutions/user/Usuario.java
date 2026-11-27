@@ -4,6 +4,7 @@ package campus.project.technova_solutions.user;
 import campus.project.technova_solutions.ticket.Ticket;
 import campus.project.technova_solutions.comment.Comentario;
 import campus.project.technova_solutions.history.HistorialCambio;
+import campus.project.technova_solutions.enums.Rol;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -27,8 +28,9 @@ public class Usuario {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String rol;
+    private Rol rol;
 
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
@@ -53,7 +55,7 @@ public class Usuario {
     }
 
     public Usuario(String nombre, String email, String password,
-                   String rol, LocalDateTime fechaCreacion) {
+                   Rol rol, LocalDateTime fechaCreacion) {
 
         this.nombre = nombre;
         this.email = email;
@@ -90,11 +92,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
