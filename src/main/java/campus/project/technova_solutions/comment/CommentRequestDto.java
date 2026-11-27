@@ -5,15 +5,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class ComentarioDTO {
+public class CommentRequestDto {
 
 
     private String contenido;
 
-    public ComentarioDTO() {
+    public CommentRequestDto() {
     }
 
-    public ComentarioDTO(String contenido) {
+    public CommentRequestDto(String contenido) {
         this.contenido = contenido;
     }
 

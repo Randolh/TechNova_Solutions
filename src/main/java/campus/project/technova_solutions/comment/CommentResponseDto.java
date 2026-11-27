@@ -4,24 +4,28 @@ package campus.project.technova_solutions.comment;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 
-public class ComentarioRespuestaDTO {
+public class CommentResponseDto {
 
     private Long id;
     private String contenido;
     private Long ticketId;
-    private String autor;
+    private Long autorId;
+    private String autorNombre;
     private LocalDateTime fechaCreacion;
 
-    public ComentarioRespuestaDTO() {
+    public CommentResponseDto() {
     }
 
-    public ComentarioRespuestaDTO(Long id, String contenido,
-                                  Long ticketId, String autor,
+    public CommentResponseDto(Long id, String contenido,
+                                  Long ticketId, Long autorId,
+                                  String autorNombre,
                                   LocalDateTime fechaCreacion) {
+
         this.id = id;
         this.contenido = contenido;
         this.ticketId = ticketId;
-        this.autor = autor;
+        this.autorId = autorId;
+        this.autorNombre = autorNombre;
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -49,12 +53,20 @@ public class ComentarioRespuestaDTO {
         this.ticketId = ticketId;
     }
 
-    public String getAutor() {
-        return autor;
+    public Long getAutorId() {
+        return autorId;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutorId(Long autorId) {
+        this.autorId = autorId;
+    }
+
+    public String getAutorNombre() {
+        return autorNombre;
+    }
+
+    public void setAutorNombre(String autorNombre) {
+        this.autorNombre = autorNombre;
     }
 
     public LocalDateTime getFechaCreacion() {

@@ -4,17 +4,17 @@ package campus.project.technova_solutions.user;
 import campus.project.technova_solutions.enums.Rol;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-public class UsuarioRespuestaDTO {
+public class UserResponseDto {
 
     private Long id;
     private String nombre;
     private String email;
     private Rol rol;
 
-    public UsuarioRespuestaDTO() {
+    public UserResponseDto() {
     }
 
-    public UsuarioRespuestaDTO(Long id, String nombre,
+    public UserResponseDto(Long id, String nombre,
                                String email, Rol rol) {
         this.id = id;
         this.nombre = nombre;

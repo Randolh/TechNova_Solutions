@@ -6,17 +6,17 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class UsuarioDTO {
+public class UserRequestDto {
 
     
     private String nombre;
     private String email;
     private String password;
 
-    public UsuarioDTO() {
+    public UserRequestDto() {
     }
 
-    public UsuarioDTO(String nombre, String email, String password) {
+    public UserRequestDto(String nombre, String email, String password) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
