@@ -9,7 +9,6 @@ import jakarta.validation.constraints.Size;
 public class CommentRequestDto {
 
     @NotBlank(message = "El comentario no puede estar vacío")
-
     @Schema(description = "Texto del comentario", example = "Se reemplazó el cable de red", requiredMode = Schema.RequiredMode.REQUIRED)
     private String contenido;
 
