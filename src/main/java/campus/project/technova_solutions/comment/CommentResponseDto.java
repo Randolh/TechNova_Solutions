@@ -4,13 +4,25 @@ package campus.project.technova_solutions.comment;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 
+@Schema(description = "Comentario registrado en un ticket")
 public class CommentResponseDto {
 
+    @Schema(description = "ID del comentario", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
+
+    @Schema(description = "Texto del comentario", example = "Se reemplazó el cable de red")
     private String contenido;
+
+    @Schema(description = "ID del ticket al que pertenece", example = "10")
     private Long ticketId;
+
+    @Schema(description = "ID del usuario que escribió el comentario", example = "3")
     private Long autorId;
+
+    @Schema(description = "Nombre del autor del comentario", example = "Ana Pérez")
     private String autorNombre;
+
+    @Schema(description = "Fecha y hora de creación del comentario", example = "2026-11-28T10:15:30", accessMode = Schema.AccessMode.READ_ONLY)
     private LocalDateTime fechaCreacion;
 
     public CommentResponseDto() {
